@@ -26,7 +26,7 @@ This is my full Hibernate journey documentation
 
 > I used to approach to specify hibernates connection to a database by using
 >  1. Persistent XML file: resources > META-INF > persistence.xml
-> 2. Java Configuration classes
+> 2. Java Configuration classes --> implements `PersistenceUnitInfo`
 
  
 ## SETUP
@@ -37,3 +37,4 @@ This is my full Hibernate journey documentation
 > - *Describe the database* : Describe them as entity classes. 
 >  By using @Entity, you mark a class as an entity, and it is mandatory to have an id marked
 >  with @Id
+> - You can now use the created entity manager to operate on the entity.

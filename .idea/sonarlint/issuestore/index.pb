@@ -11,3 +11,5 @@ c
 3src/main/java/com/clement/entity/ProductEntity.java,7\0\70f489344827b5522c396b973ee7ae3aa5ca3650
 ]
 -src/main/java/com/clement/entity/Product.java,c\3\c3c75aed3f4b64b9339d0d5a4fde1a8883e48144
+t
+Dsrc/main/java/com/clement/persistance/CustomPersistenceUnitInfo.java,a\1\a174f7c1079f0697d20fa3281467fab0fa82f44e
