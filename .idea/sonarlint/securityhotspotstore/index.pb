@@ -13,3 +13,5 @@ c
 -src/main/java/com/clement/entity/Product.java,c\3\c3c75aed3f4b64b9339d0d5a4fde1a8883e48144
 t
 Dsrc/main/java/com/clement/persistance/CustomPersistenceUnitInfo.java,a\1\a174f7c1079f0697d20fa3281467fab0fa82f44e
+^
+.src/main/java/com/clement/entity/Employee.java,1\9\195afdc89e103cdd4cf85ab73f97dd60e5501286

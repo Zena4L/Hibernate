@@ -23,6 +23,8 @@ public class HibernateApp {
             product.setId(2L);
             product.setName("Beer");
 
+            em.find(Product.class, 1);
+
             em.persist(product);  //add to the context -> Not an insert query
 
             em.getTransaction().commit();
