@@ -170,7 +170,8 @@ This is my full Hibernate journey documentation
 ## ONE-TO-MANY RELATIONSHIP
 
 > **Cas study** : Post and Comments
-> ![img](https://www.callicoder.com/static/75ea6facc68feee16d4477ba58dd47d9/508ef/hibernate-one-to-many-mapping-example-table-structure.png)
+ ![img](https://www.callicoder.com/static/75ea6facc68feee16d4477ba58dd47d9/508ef/hibernate-one-to-many-mapping-example-table-structure.png)
+> 
 > A post can have multiple comments but a comment belongs to exactly one post
 >
 > To specify a One-to-Many relationship there are 3 choices
