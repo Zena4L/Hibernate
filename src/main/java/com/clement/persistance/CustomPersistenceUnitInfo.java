@@ -43,16 +43,22 @@ public class CustomPersistenceUnitInfo implements PersistenceUnitInfo {
 
     @Override
     public DataSource getJtaDataSource() {
-        return null;
-    }
-
-    @Override
-    public DataSource getNonJtaDataSource() {
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setUsername("admin");
         dataSource.setPassword("password");
         dataSource.setJdbcUrl("jdbc:postgresql://localhost:5431/hibernate");
         return dataSource;
+
+    }
+
+    @Override
+    public DataSource getNonJtaDataSource() {
+//        HikariDataSource dataSource = new HikariDataSource();
+//        dataSource.setUsername("admin");
+//        dataSource.setPassword("password");
+//        dataSource.setJdbcUrl("jdbc:postgresql://localhost:5431/hibernate");
+//        return dataSource;
+        return null;
     }
 
     @Override

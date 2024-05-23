@@ -15,3 +15,9 @@ t
 Dsrc/main/java/com/clement/persistance/CustomPersistenceUnitInfo.java,a\1\a174f7c1079f0697d20fa3281467fab0fa82f44e
 ^
 .src/main/java/com/clement/entity/Employee.java,1\9\195afdc89e103cdd4cf85ab73f97dd60e5501286
+m
+=src/main/java/com/clement/generators/CustomUUIDGenerator.java,0\6\068fbc396a47e37c64e7a478615f94e59bbd16f3
+^
+.src/main/java/com/clement/keys/ProductKey.java,3\3\338042c51fe1512d45fa5cb97caac7c74e6d707a
+a
+1src/main/java/com/clement/keys/ProductKeyEmb.java,e\7\e78445cd7f51180300bc27399420d5c17c4e3cc5
