@@ -21,3 +21,7 @@ m
 .src/main/java/com/clement/keys/ProductKey.java,3\3\338042c51fe1512d45fa5cb97caac7c74e6d707a
 a
 1src/main/java/com/clement/keys/ProductKeyEmb.java,e\7\e78445cd7f51180300bc27399420d5c17c4e3cc5
+]
+-src/main/java/com/clement/entity/Country.java,5\a\5a08d9c83e352d98bd18faef3f0dd159f121ae35
+a
+1src/main/java/com/clement/entity/CapitalCity.java,e\3\e3927df59c4ef759d01ed6a0d0f785e480b71131

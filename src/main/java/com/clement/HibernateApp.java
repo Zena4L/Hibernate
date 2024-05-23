@@ -1,9 +1,12 @@
 package com.clement;
 
+import com.clement.entity.CapitalCity;
+import com.clement.entity.Country;
 import com.clement.entity.Product;
 import com.clement.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 
@@ -29,17 +32,29 @@ public class HibernateApp {
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
 
-            Product product = new Product();
+//            Product product = new Product();
 ////            product.setId(1L);
-            product.setName("Beer");
+//            product.setName("Beer");
 //
 //
 ////            em.find(Product.class, 1);
 //
-            em.persist(product);  //add to the context -> Not an insert query
+//            em.persist(product);  //add to the context -> Not an insert query
 
 //            em.getReference(Product.class, 1);
 
+            CapitalCity capitalCity = new CapitalCity();
+            capitalCity.setName("Accra");
+
+            Country country = new Country();
+            country.setName("Ghana");
+            country.setCapitalCity(capitalCity);
+
+            capitalCity.setCountry(country);
+
+            // the persisting order doesn't matter because persist != insert
+//            em.persist(capitalCity);
+            em.persist(country);
 
             em.getTransaction().commit();
         }

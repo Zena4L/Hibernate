@@ -9,6 +9,7 @@ import jakarta.persistence.spi.PersistenceUnitTransactionType;
 
 import javax.sql.DataSource;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
@@ -78,7 +79,12 @@ public class CustomPersistenceUnitInfo implements PersistenceUnitInfo {
 
     @Override
     public List<String> getManagedClassNames() {
-        return Collections.singletonList("com.clement.entity.Product");
+        List<String> l = new ArrayList<>();
+//        l.add("com.clement.entity.Product");
+        l.add("com.clement.entity.Country");
+        l.add("com.clement.entity.CapitalCity");
+
+        return l;
     }
 
     @Override

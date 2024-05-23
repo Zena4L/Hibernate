@@ -5,38 +5,42 @@ import com.clement.keys.ProductKey;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.UUID;
+
 
 @Entity
-@IdClass(ProductKey.class) // for composite IDs
+//@IdClass(ProductKey.class) // for composite IDs
 public class Product {
 
 
-
     /**
-     *
      * Custom simple Id generator
-     @Id
-    @GenericGenerator(name = "UUIDGenerator", type = CustomUUIDGenerator.class)
-    @GeneratedValue(generator = "UUIDGenerator")
-    @Column(length = 500)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+     *
+     * @Id
+     * @GenericGenerator(name = "UUIDGenerator", type = CustomUUIDGenerator.class)
+     * @GeneratedValue(generator = "UUIDGenerator")
+     * @Column(length = 500)
+     * @GeneratedValue(strategy = GenerationType.SEQUENCE)
      */
 
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     private String name;
 
-    @Id
-    private String code;
+    //    @Id
+//    private String code;
 
-    @Id
-    private Long  number;
+    //    @Id
+//    private Long number;
 
-    public String getId() {
+
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -48,19 +52,19 @@ public class Product {
         this.name = name;
     }
 
-    public String getCode() {
-        return code;
-    }
+//    public String getCode() {
+//        return code;
+//    }
+//
+//    public void setCode(String code) {
+//        this.code = code;
+//    }
+//
+//    public Long getNumber() {
+//        return number;
+//    }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public Long getNumber() {
-        return number;
-    }
-
-    public void setNumber(Long number) {
-        this.number = number;
-    }
+//    public void setNumber(Long number) {
+//        this.number = number;
+//    }
 }

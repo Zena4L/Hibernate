@@ -14,6 +14,9 @@
 7. [OPERATIONS ON THE CONTEXT](#operations-on-the-context)
 8. [ID GENERATION](#id-generation)
 9. [PRIMARY KEY(PK)](#primary-keypk)
+10. [ONE-TO-ONE RELATIONSHIP](#one-to-one-relationship)
+11. [CASCADING](#cascading)
+12. [FETCH](#fetch)
 
 # HIBERNATE AND JPA
 
@@ -79,6 +82,10 @@ This is my full Hibernate journey documentation
 > - A composite primary key
 
 > `@Column`: Enable details about the column.
+>
+> [`@OneToOne`](#one-to-one-relationship) : Create a one-to-one relationship
+>
+> [`@JoinColumn`](#one-to-one-relationship) : Manipulate the foreignKey column on a table
 
 > `Best practice is to use the annotations you only need`.
 
@@ -91,6 +98,7 @@ This is my full Hibernate journey documentation
 > - `refresh`: Mirror the context from the database: This is like an undo to any change to the entity
     >   in the context.
 > - `detach`: Taking the entity out of the context.
+> - `flush` : Mirror it now, don't wait till end of the trasaction
 
 > `find` vs `getReference`:
 > The find executes a `select` query and if found the entity will be added to the context.
@@ -134,3 +142,45 @@ This is my full Hibernate journey documentation
 > 2. Using Embeddable `@Embeddable`:
      > The representation will be an instance of an embeddable class then in your entity class
      > you no longer use `@Id` but rather `@EmbeddedId`.
+
+## ONE-TO-ONE RELATIONSHIP
+
+![img](https://vertabelo.com/blog/one-to-one-relationship-in-database/1-to-1-pk-plus-fk.png)
+> This is a relationship where two entities A and B are linked in a way that exactly one instance
+> of A is linked to one instance of B.
+> `eg: A country can have only One capital city and a capital can belong to only country`
+>
+> To implement this relationship, there are two kinds of relationship in JPA implementation
+> 1. Unidirectional --> only one entity know of the other.
+> 2. Bi-directional --> Both entities knows about each other
+     > To mark an entity as a 1-to-1,you anotate the field with `@OneToOne`
+     > You can use `@JoinColumn` to manipulate the foreign key column
+     > and for Bi-directional, the other end is going to recieved `mappedBy` attribute where
+     > you have to specify the name of the field on the other end
+     > **Whoever that have the `@JoinColumn` is the owning entity**
+>
+>  `orphanRemoval`: is a constraint that allows the child of remain in the DB even if the parent
+> has been removed.
+> 
+> 
+
+## CASCADING
+
+> When you apply an operation to a specific instance you want to apply the same to other
+> instances that are linked to.
+>
+> Eg: If I persist a Country I want to automatically persist the Capital City
+>
+> Cascading is done by using the `cascade` attribute on the relationship annotation .
+>
+> There are mulitiple operations the cascade can perform and they are all the operations we can do
+> with the entity manager
+>
+> **Avoid using the` CascadeType.ALL`**
+
+## FETCH
+
+> default fetechType of any non-collection is by default `eager`. I.e when you select a country
+> automatically the capital city will be fetched as well.
+>
+> You can control this by using `FetchType.LAZY`
