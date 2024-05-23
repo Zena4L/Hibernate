@@ -81,8 +81,10 @@ public class CustomPersistenceUnitInfo implements PersistenceUnitInfo {
     public List<String> getManagedClassNames() {
         List<String> l = new ArrayList<>();
 //        l.add("com.clement.entity.Product");
-        l.add("com.clement.entity.Country");
-        l.add("com.clement.entity.CapitalCity");
+//        l.add("com.clement.entity.Country");
+//        l.add("com.clement.entity.CapitalCity");
+        l.add("com.clement.entity.Post");
+        l.add("com.clement.entity.Comment");
 
         return l;
     }

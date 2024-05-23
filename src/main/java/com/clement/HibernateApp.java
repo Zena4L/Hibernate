@@ -43,18 +43,18 @@ public class HibernateApp {
 
 //            em.getReference(Product.class, 1);
 
-            CapitalCity capitalCity = new CapitalCity();
-            capitalCity.setName("Accra");
-
-            Country country = new Country();
-            country.setName("Ghana");
-            country.setCapitalCity(capitalCity);
-
-            capitalCity.setCountry(country);
+//            CapitalCity capitalCity = new CapitalCity();
+//            capitalCity.setName("Accra");
+//
+//            Country country = new Country();
+//            country.setName("Ghana");
+//            country.setCapitalCity(capitalCity);
+//
+//            capitalCity.setCountry(country);
 
             // the persisting order doesn't matter because persist != insert
 //            em.persist(capitalCity);
-            em.persist(country);
+//            em.persist(country);
 
             em.getTransaction().commit();
         }

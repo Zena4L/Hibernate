@@ -25,3 +25,7 @@ a
 -src/main/java/com/clement/entity/Country.java,5\a\5a08d9c83e352d98bd18faef3f0dd159f121ae35
 a
 1src/main/java/com/clement/entity/CapitalCity.java,e\3\e3927df59c4ef759d01ed6a0d0f785e480b71131
+Z
+*src/main/java/com/clement/entity/Post.java,1\8\181cca9a4cb9610fd4e36e8171ce6d4d971658b2
+]
+-src/main/java/com/clement/entity/Comment.java,3\4\348affaa97342729b294036247d891218c4a6ad7

@@ -15,8 +15,9 @@
 8. [ID GENERATION](#id-generation)
 9. [PRIMARY KEY(PK)](#primary-keypk)
 10. [ONE-TO-ONE RELATIONSHIP](#one-to-one-relationship)
-11. [CASCADING](#cascading)
-12. [FETCH](#fetch)
+11. [ONE-TO-MANY RELATIONSHIP](#one-to-many-relationship)
+12. [CASCADING](#cascading)
+13. [FETCH](#fetch)
 
 # HIBERNATE AND JPA
 
@@ -86,6 +87,8 @@ This is my full Hibernate journey documentation
 > [`@OneToOne`](#one-to-one-relationship) : Create a one-to-one relationship
 >
 > [`@JoinColumn`](#one-to-one-relationship) : Manipulate the foreignKey column on a table
+>
+> [`@OneToMany` and `@ManyToOne`](#one-to-many-relationship) : Indicates a one-to-many
 
 > `Best practice is to use the annotations you only need`.
 
@@ -161,8 +164,35 @@ This is my full Hibernate journey documentation
 >
 >  `orphanRemoval`: is a constraint that allows the child of remain in the DB even if the parent
 > has been removed.
+>
+>
+
+## ONE-TO-MANY RELATIONSHIP
+
+> **Cas study** : Post and Comments
+> ![img](https://www.callicoder.com/static/75ea6facc68feee16d4477ba58dd47d9/508ef/hibernate-one-to-many-mapping-example-table-structure.png)
+> A post can have multiple comments but a comment belongs to exactly one post
+>
+> To specify a One-to-Many relationship there are 3 choices
+> 1. A uni-directional relationship but from the comment side
+> 2. A uni-directional relationship but from the post side
+> 3. A bi-directional relationship
+>
+> There is `@ManyToOne` and `@OneToMany`
+>
+> - `@ManyToOne` -: Many comments to one post - And the annotated field should be a collection
+> - `@OneToMany` -: One post to Many comments
+>
+> By default, with one to many relationship, a third table is created which holds the foreign keys
+> and that table is called the joined table.
+>
+> Hence is is best to use the `@JoinColumn` to specify the name you want.
 > 
+> **ESP** : The `JoinColumn` should always be on the opposite side .
 > 
+> **In Many-to-One, the owning entity is always the side with `MANY`**
+> 
+> In many-to-one the default fetch is eager because it is not a collection
 
 ## CASCADING
 
@@ -173,7 +203,7 @@ This is my full Hibernate journey documentation
 >
 > Cascading is done by using the `cascade` attribute on the relationship annotation .
 >
-> There are mulitiple operations the cascade can perform and they are all the operations we can do
+> There are mulitiple operations the cascade can perform, and they are all the operations we can do
 > with the entity manager
 >
 > **Avoid using the` CascadeType.ALL`**
