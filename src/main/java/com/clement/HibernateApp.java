@@ -1,13 +1,8 @@
 package com.clement;
 
-import com.clement.entity.CapitalCity;
-import com.clement.entity.Country;
-import com.clement.entity.Product;
 import com.clement.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.TypedQuery;
-import org.hibernate.Session;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 
 import java.util.HashMap;

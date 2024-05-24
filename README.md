@@ -16,8 +16,9 @@
 9. [PRIMARY KEY(PK)](#primary-keypk)
 10. [ONE-TO-ONE RELATIONSHIP](#one-to-one-relationship)
 11. [ONE-TO-MANY RELATIONSHIP](#one-to-many-relationship)
-12. [CASCADING](#cascading)
-13. [FETCH](#fetch)
+12. [MANY-TO-MANY RELATIONSHIP](#many-to-many-relationship)
+13. [CASCADING](#cascading)
+14. [FETCH](#fetch)
 
 # HIBERNATE AND JPA
 
@@ -89,6 +90,9 @@ This is my full Hibernate journey documentation
 > [`@JoinColumn`](#one-to-one-relationship) : Manipulate the foreignKey column on a table
 >
 > [`@OneToMany` and `@ManyToOne`](#one-to-many-relationship) : Indicates a one-to-many
+>
+> [`@JoinTable`](#many-to-many-relationship): This doesn't map to any table in the ORM but only
+> used behind the scenes to create tables that manage the object
 
 > `Best practice is to use the annotations you only need`.
 
@@ -155,7 +159,7 @@ This is my full Hibernate journey documentation
 >
 > To implement this relationship, there are two kinds of relationship in JPA implementation
 > 1. Unidirectional --> only one entity know of the other.
-> 2. Bi-directional --> Both entities knows about each other
+> 2. Bidirectional --> Both entities knows about each other
      > To mark an entity as a 1-to-1,you anotate the field with `@OneToOne`
      > You can use `@JoinColumn` to manipulate the foreign key column
      > and for Bi-directional, the other end is going to recieved `mappedBy` attribute where
@@ -170,30 +174,58 @@ This is my full Hibernate journey documentation
 ## ONE-TO-MANY RELATIONSHIP
 
 > **Cas study** : Post and Comments
- ![img](https://www.callicoder.com/static/75ea6facc68feee16d4477ba58dd47d9/508ef/hibernate-one-to-many-mapping-example-table-structure.png)
-> 
+![img](https://www.callicoder.com/static/75ea6facc68feee16d4477ba58dd47d9/508ef/hibernate-one-to-many-mapping-example-table-structure.png)
+>
 > A post can have multiple comments but a comment belongs to exactly one post
 >
 > To specify a One-to-Many relationship there are 3 choices
 > 1. A uni-directional relationship but from the comment side
 > 2. A uni-directional relationship but from the post side
-> 3. A bi-directional relationship
+> 3. A bidirectional relationship
 >
 > There is `@ManyToOne` and `@OneToMany`
 >
 > - `@ManyToOne` -: Many comments to one post - And the annotated field should be a collection
 > - `@OneToMany` -: One post to Many comments
 >
-> By default, with one to many relationship, a third table is created which holds the foreign keys
+> By default, with one-to-many relationship, a third table is created which holds the foreign keys
 > and that table is called the joined table.
 >
-> Hence is is best to use the `@JoinColumn` to specify the name you want.
-> 
+> Hence, is best to use the `@JoinColumn` to specify the name you want.
+>
 > **ESP** : The `JoinColumn` should always be on the opposite side .
-> 
+>
 > **In Many-to-One, the owning entity is always the side with `MANY`**
-> 
+>
 > In many-to-one the default fetch is eager because it is not a collection
+
+## MANY-TO-MANY RELATIONSHIP
+
+> **Cas study** : Users and Groups
+>
+> With this relationship, a user can belong to many groups whiles a group will have many
+> users at the same time. This is a many-to-many relationship
+>
+> In many to many, you can not apply a physical relation and hence to implement this you
+> need to use `@JoinTable`
+> 
+> In this relationship there is no foreign key since it uses a joinTable. and you can chose
+> between uni-directional or bidirectional relationship.
+> 
+> `@ManyToMany` annotation is used to mark the relationship
+> 
+> You then need to provide information about the joinTable
+> ```angular2html
+> @JoinTable(
+> name = "user_groups",
+> joinColumns = @JoinColumn(name = "group_id"),
+> inverseJoinColumns = @JoinColumn(name = "user_id")
+> )
+> ```
+> `inverseJoinColumns` this is for the opposite side of the relationship. In this case the user
+> 
+> collections are with fetchType of Lazy by default
+> This is done to avoid memory issues
 
 ## CASCADING
 
@@ -204,14 +236,14 @@ This is my full Hibernate journey documentation
 >
 > Cascading is done by using the `cascade` attribute on the relationship annotation .
 >
-> There are mulitiple operations the cascade can perform, and they are all the operations we can do
+> There are multiple operations the cascade can perform, and they are all the operations we can do
 > with the entity manager
 >
 > **Avoid using the` CascadeType.ALL`**
 
 ## FETCH
 
-> default fetechType of any non-collection is by default `eager`. I.e when you select a country
+> default fetechType of any non-collection is by default `eager`. I.e. when you select a country
 > automatically the capital city will be fetched as well.
 >
 > You can control this by using `FetchType.LAZY`

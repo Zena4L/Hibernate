@@ -1,9 +1,12 @@
-package com.clement.entity;
+package com.clement.entity.manyToMany;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-public class Country {
+@Table(name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,10 +14,8 @@ public class Country {
 
     private String name;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "capital_city")
-    private CapitalCity capitalCity;
-
+    @ManyToMany(mappedBy = "users")
+    private List<Group> groups;
 
     public Long getId() {
         return id;
@@ -32,11 +33,11 @@ public class Country {
         this.name = name;
     }
 
-    public CapitalCity getCapitalCity() {
-        return capitalCity;
+    public List<Group> getGroups() {
+        return groups;
     }
 
-    public void setCapitalCity(CapitalCity capitalCity) {
-        this.capitalCity = capitalCity;
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 }

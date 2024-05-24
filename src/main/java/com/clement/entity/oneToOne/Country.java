@@ -1,9 +1,9 @@
-package com.clement.entity;
+package com.clement.entity.oneToOne;
 
 import jakarta.persistence.*;
 
 @Entity
-public class CapitalCity {
+public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,8 +11,10 @@ public class CapitalCity {
 
     private String name;
 
-    @OneToOne(mappedBy ="capitalCity" )
-   private Country country;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "capital_city")
+    private CapitalCity capitalCity;
+
 
     public Long getId() {
         return id;
@@ -30,11 +32,11 @@ public class CapitalCity {
         this.name = name;
     }
 
-    public Country getCountry() {
-        return country;
+    public CapitalCity getCapitalCity() {
+        return capitalCity;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setCapitalCity(CapitalCity capitalCity) {
+        this.capitalCity = capitalCity;
     }
 }

@@ -1,4 +1,4 @@
-package com.clement.entity;
+package com.clement.entity.oneToMany;
 
 import jakarta.persistence.*;
 
