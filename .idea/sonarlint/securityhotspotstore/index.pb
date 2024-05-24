@@ -43,3 +43,9 @@ e
 5src/main/java/com/clement/entity/manyToMany/User.java,5\e\5e3bbd5f5e15b841621b9db012e6613d04ccf062
 f
 6src/main/java/com/clement/entity/manyToMany/Group.java,9\0\902fd4f295c86fad7a8540247ae9dd3d7b66aa9e
+i
+9src/main/java/com/clement/entity/inheritance/Product.java,9\a\9aa642064916c393385335786ff6e57c1689314e
+f
+6src/main/java/com/clement/entity/inheritance/Book.java,4\1\41dfb0ce00b31dd000dc10647d403e49ceec7238
+l
+<src/main/java/com/clement/entity/inheritance/Electronic.java,8\5\85807ddb455a9761c6c01c130420f64fdd75c27a

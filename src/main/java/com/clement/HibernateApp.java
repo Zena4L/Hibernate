@@ -1,5 +1,7 @@
 package com.clement;
 
+import com.clement.entity.inheritance.Book;
+import com.clement.entity.inheritance.Electronic;
 import com.clement.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -18,7 +20,7 @@ public class HibernateApp {
 
         // defining the properties
         props.put("hibernate.show_sql", "true"); //show only sqls
-        props.put("hibernate.hbm2ddl.auto", "create"); //don't use create only use none in production //create , none , update
+        props.put("hibernate.hbm2ddl.auto", "create-drop"); //don't use create only use none in production //create , none , update
 
 
         EntityManagerFactory emf = new HibernatePersistenceProvider()
@@ -50,6 +52,17 @@ public class HibernateApp {
             // the persisting order doesn't matter because persist != insert
 //            em.persist(capitalCity);
 //            em.persist(country);
+
+            //inheritance
+
+            Book b1 = new Book();
+            b1.setAuthor("clement");
+
+            Electronic e1 = new Electronic();
+            e1.setVoltage(20);
+
+            em.persist(b1);
+            em.persist(e1);
 
             em.getTransaction().commit();
         }

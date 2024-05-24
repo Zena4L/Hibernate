@@ -19,6 +19,7 @@
 12. [MANY-TO-MANY RELATIONSHIP](#many-to-many-relationship)
 13. [CASCADING](#cascading)
 14. [FETCH](#fetch)
+15. [ENTITY INHERITANCE](#entity-inheritance)
 
 # HIBERNATE AND JPA
 
@@ -208,12 +209,12 @@ This is my full Hibernate journey documentation
 >
 > In many to many, you can not apply a physical relation and hence to implement this you
 > need to use `@JoinTable`
-> 
+>
 > In this relationship there is no foreign key since it uses a joinTable. and you can chose
 > between uni-directional or bidirectional relationship.
-> 
+>
 > `@ManyToMany` annotation is used to mark the relationship
-> 
+>
 > You then need to provide information about the joinTable
 > ```angular2html
 > @JoinTable(
@@ -223,7 +224,7 @@ This is my full Hibernate journey documentation
 > )
 > ```
 > `inverseJoinColumns` this is for the opposite side of the relationship. In this case the user
-> 
+>
 > collections are with fetchType of Lazy by default
 > This is done to avoid memory issues
 
@@ -247,3 +248,24 @@ This is my full Hibernate journey documentation
 > automatically the capital city will be fetched as well.
 >
 > You can control this by using `FetchType.LAZY`
+
+## ENTITY INHERITANCE
+
+> This is not a concept you find very often but a great skill to have
+> Assuming we have 2 different `Product` i.e. `Book` and `Electronics`.
+>
+> The Id can either be defined by the class or it's parent
+>
+> Because it is mandatory for an entity class to have a `PK`, in the case of inheritance,
+> this `PK` can be put into a parent entity and all children entity will inherit that
+>
+> **How is Inheritance represented in DB?** : To do that you have to consider 3 strategies(Inheritance strategy)
+> To chose the inheritance strategy, you need to annotate the parent class with `@Inheritance(strategy=type)`
+> 1. `SINGLE_TABLE`: It will only define one table in the DB. This table will contain all the
+     > children products. Using this strategy, Hibernate will create a `discriminator` column. This is added
+  > to all attribute to specify the type of product. The query is made only to one table `Product`
+> 2. `JOINED` : This will automatically create 3 table. And to get all that you need, You will
+  > have to write queries using `JOIN`. 
+> 3. `TABLE_PER_CLASS **ALWAYS AVOID**` : No longer supported by hibernate
+>
+> 
