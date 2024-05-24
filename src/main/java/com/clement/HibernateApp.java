@@ -3,6 +3,8 @@ package com.clement;
 import com.clement.entity.Product;
 import com.clement.entity.inheritance.Book;
 import com.clement.entity.inheritance.Electronic;
+import com.clement.entity.oneToMany.Comment;
+import com.clement.entity.oneToMany.Post;
 import com.clement.persistance.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -33,15 +35,15 @@ public class HibernateApp {
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
 
-            Product product = new Product();
+//            Product product = new Product();
 //            product.setId(1L);
-            product.setName("Beer");
-            product.setPrice(20);
+//            product.setName("Beer");
+//            product.setPrice(20);
 //
 //
 ////            em.find(Product.class, 1);
 //
-            em.persist(product);  //add to the context -> Not an insert query
+//            em.persist(product);  //add to the context -> Not an insert query
 
 //            em.getReference(Product.class, 1);
 
@@ -71,15 +73,34 @@ public class HibernateApp {
 
             //JPQL
 
+            Post p = new Post();
+            p.setTitle("test");
+            p.setContent("Hello");
+
+            Comment c = new Comment();
+            c.setContents("hello");
+
+            c.setPost(p);
+            p.setComments(List.of(c));
+
+
+            em.persist(p);
+            em.persist(c);
+
 //            String query = "SELECT p FROM Product p";
 //            String query = "SELECT p FROM Product p WHERE p.name = 'Beer'";
-            String query = "SELECT p FROM Product p WHERE p.name =:name";
+//            String query = "SELECT p FROM Product p WHERE p.name =:name";
+
+            String query = "SELECT p,c FROM Post p INNER JOIN p.comments c";
+
 //           Query q = em.createQuery("SELECT p FROM Product p");
-            TypedQuery<Product> q = em.createQuery(query, Product.class);
 
-            q.setParameter("name", "Beer");
+//
+            TypedQuery<Object[]> q = em.createQuery(query, Object[].class);
 
-            q.getResultList().stream().forEach(System.out::println);
+//            q.setParameter("name", "Beer");
+
+            q.getResultList().forEach(o -> System.out.println(o[0] + " " + o[1]));
 
             em.getTransaction().commit();
         }

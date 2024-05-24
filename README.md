@@ -13,7 +13,7 @@
 6. [ANNOTATIONS](#annotations)
 7. [OPERATIONS ON THE CONTEXT](#operations-on-the-context)
 8. [ID GENERATION](#id-generation)
-9. [PRIMARY KEY(PK)](#primary-keypk)
+9. [PRIMARY KEY(PK)](#primary-key-pk)
 10. [ONE-TO-ONE RELATIONSHIP](#one-to-one-relationship)
 11. [ONE-TO-MANY RELATIONSHIP](#one-to-many-relationship)
 12. [MANY-TO-MANY RELATIONSHIP](#many-to-many-relationship)
@@ -21,6 +21,7 @@
 14. [FETCH](#fetch)
 15. [ENTITY INHERITANCE](#entity-inheritance)
 16. [JPQL QUERIES](#jpql-queries)
+17. [JOINS AND INNER QUERIES](#joins-and-inner-queries)
 
 # HIBERNATE AND JPA
 
@@ -288,5 +289,13 @@ This is my full Hibernate journey documentation
 >```
 > Remember that there is no `insert` method Hibernate context. Hence, the only want to use an insert
 > is using the `persist` of the entity manager
-> 
+>
 > Named parameter can be use also. Anything that works in a native query also works in jpql
+
+## JOINS AND INNER QUERIES
+
+> Consider having tables that have relationships between then, you can perform joined queries with JPQL and
+> normal queries too.
+>
+> A joined query returns an `Object[]`
+> **NOTE** : when doing joins, look out for N+1 queries

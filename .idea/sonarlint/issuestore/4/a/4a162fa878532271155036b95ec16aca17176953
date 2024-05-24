@@ -1,19 +1,19 @@
 
-]	java:S125"<This block of commented-out lines of code should be removed.(¼Íä¸úÿÿÿÿ8ÜÈçÒú1
-X	java:S125%"<This block of commented-out lines of code should be removed.(°ê¤8âÈçÒú1
-X	java:S125*"<This block of commented-out lines of code should be removed.(ôÓ÷Í8âÈçÒú1
-X	java:S125."<This block of commented-out lines of code should be removed.(®ÃŒá8ãÈçÒú1
-]	java:S1250"<This block of commented-out lines of code should be removed.(§“ÕÁúÿÿÿÿ8ãÈçÒú1
-X	java:S125:"<This block of commented-out lines of code should be removed.(„¡ˆŒ8ãÈçÒú1
-X	java:S125?"<This block of commented-out lines of code should be removed.(É«Ä÷8ãÈçÒú1
-]	java:S125J"<This block of commented-out lines of code should be removed.(š…¼¬ıÿÿÿÿ8ãÈçÒú1
-X	java:S125M"<This block of commented-out lines of code should be removed.(‚ –Ñ8ãÈçÒú1
-L	java:S106R"+Replace this use of System.out by a logger.(ˆØà¬ıÿÿÿÿ8äÈçÒú1
+]	java:S125"<This block of commented-out lines of code should be removed.(¼Íä¸úÿÿÿÿ8ã¦Ä×ú1
+]	java:S125&"<This block of commented-out lines of code should be removed.(şØÕ«ùÿÿÿÿ8ê¦Ä×ú1
+X	java:S1250"<This block of commented-out lines of code should be removed.(®ÃŒá8ê¦Ä×ú1
+]	java:S1252"<This block of commented-out lines of code should be removed.(§“ÕÁúÿÿÿÿ8ë¦Ä×ú1
+X	java:S125<"<This block of commented-out lines of code should be removed.(„¡ˆŒ8ë¦Ä×ú1
+X	java:S125A"<This block of commented-out lines of code should be removed.(É«Ä÷8ë¦Ä×ú1
+]	java:S125Z"<This block of commented-out lines of code should be removed.(š…¼¬ıÿÿÿÿ8ë¦Ä×ú1
+X	java:S125`"<This block of commented-out lines of code should be removed.(‚ –Ñ8ì¦Ä×ú1
+X	java:S125e"<This block of commented-out lines of code should be removed.(ã“…½8ì¦Ä×ú1
+L	java:S106g"+Replace this use of System.out by a logger.(¶¿–¿øÿÿÿÿ8…§Ä×ú1
+Y
+java:S1128"7Remove this unused import 'com.clement.entity.Product'.(İß‚÷şÿÿÿÿ8ì®Ë×ú1
 ]
-java:S1128"@Remove this unused import 'com.clement.entity.inheritance.Book'.(ğÇÉÉ8äÈçÒú1
+java:S1128"@Remove this unused import 'com.clement.entity.inheritance.Book'.(ğÇÉÉ8ì®Ë×ú1
 b
-java:S1128"FRemove this unused import 'com.clement.entity.inheritance.Electronic'.(©•ñ8äÈçÒú1
+java:S1128"FRemove this unused import 'com.clement.entity.inheritance.Electronic'.(©•ñ8ì®Ë×ú1
 S
-java:S1128	"6Remove this unused import 'jakarta.persistence.Query'.(³¸³æ8åÈçÒú1
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8åÈçÒú1
+java:S1128"6Remove this unused import 'jakarta.persistence.Query'.(³¸³æ8ì®Ë×ú1
