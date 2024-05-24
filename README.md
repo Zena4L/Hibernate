@@ -161,9 +161,9 @@ This is my full Hibernate journey documentation
 > To implement this relationship, there are two kinds of relationship in JPA implementation
 > 1. Unidirectional --> only one entity know of the other.
 > 2. Bidirectional --> Both entities knows about each other
-     > To mark an entity as a 1-to-1,you anotate the field with `@OneToOne`
+     > To mark an entity as a 1-to-1,you annotate the field with `@OneToOne`
      > You can use `@JoinColumn` to manipulate the foreign key column
-     > and for Bi-directional, the other end is going to recieved `mappedBy` attribute where
+     > and for Bi-directional, the other end is going to receive `mappedBy` attribute where
      > you have to specify the name of the field on the other end
      > **Whoever that have the `@JoinColumn` is the owning entity**
 >
@@ -210,10 +210,11 @@ This is my full Hibernate journey documentation
 > In many to many, you can not apply a physical relation and hence to implement this you
 > need to use `@JoinTable`
 >
-> In this relationship there is no foreign key since it uses a joinTable. and you can chose
+> In this relationship there is no foreign key since it uses a joinTable. and you can choose
 > between uni-directional or bidirectional relationship.
 >
 > `@ManyToMany` annotation is used to mark the relationship
+> ![many-to-many](https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Databases-ManyToManyWJunction.jpg/1200px-Databases-ManyToManyWJunction.jpg)
 >
 > You then need to provide information about the joinTable
 > ```angular2html
