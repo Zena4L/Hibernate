@@ -49,3 +49,5 @@ f
 6src/main/java/com/clement/entity/inheritance/Book.java,4\1\41dfb0ce00b31dd000dc10647d403e49ceec7238
 l
 <src/main/java/com/clement/entity/inheritance/Electronic.java,8\5\85807ddb455a9761c6c01c130420f64fdd75c27a
+j
+:src/main/java/com/clement/entity/inheritance/ProductR.java,6\0\608fdd98d203faf0b20964d0c7c70b2e2b6ada5c

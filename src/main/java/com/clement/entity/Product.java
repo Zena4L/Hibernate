@@ -27,7 +27,17 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     private String name;
+
+    private int price;
 
     //    @Id
 //    private String code;
@@ -50,6 +60,14 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 
 //    public String getCode() {

@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Product {
+public class ProductR {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

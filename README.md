@@ -20,6 +20,7 @@
 13. [CASCADING](#cascading)
 14. [FETCH](#fetch)
 15. [ENTITY INHERITANCE](#entity-inheritance)
+16. [JPQL QUERIES](#jpql-queries)
 
 # HIBERNATE AND JPA
 
@@ -245,7 +246,7 @@ This is my full Hibernate journey documentation
 
 ## FETCH
 
-> default fetechType of any non-collection is by default `eager`. I.e. when you select a country
+> default fetchType of any non-collection is by default `eager`. I.e. when you select a country
 > automatically the capital city will be fetched as well.
 >
 > You can control this by using `FetchType.LAZY`
@@ -264,9 +265,28 @@ This is my full Hibernate journey documentation
 > To chose the inheritance strategy, you need to annotate the parent class with `@Inheritance(strategy=type)`
 > 1. `SINGLE_TABLE`: It will only define one table in the DB. This table will contain all the
      > children products. Using this strategy, Hibernate will create a `discriminator` column. This is added
-  > to all attribute to specify the type of product. The query is made only to one table `Product`
+     > to all attribute to specify the type of product. The query is made only to one table `Product`
 > 2. `JOINED` : This will automatically create 3 table. And to get all that you need, You will
-  > have to write queries using `JOIN`. 
+     > have to write queries using `JOIN`.
 > 3. `TABLE_PER_CLASS **ALWAYS AVOID**` : No longer supported by hibernate
 >
+
+## JPQL QUERIES
+
+> This is a Java Persistence Query Language, it's a query language for the objects in the context of
+> JPA implementation.
+> An easy way to create query is by using `createQuery` method of the entity manager.
+> `createQuery` provide a lot of method overload, you can look into it.
+>
+> Considering this jqpl `String query = "SELECT p FROM Product p";`, the projection is represented by
+> `p`, it can be anything. And instead of selecting from a table, you select from the entity class.
+>
+> ```angular2html
+> SELECT * FROM product //===> Fetech all the columns from table Product
 > 
+> SELECT p FROM Product p //===> Fetch all the attributes of the product entity from the context
+>```
+> Remember that there is no `insert` method Hibernate context. Hence, the only want to use an insert
+> is using the `persist` of the entity manager
+> 
+> Named parameter can be use also. Anything that works in a native query also works in jpql
