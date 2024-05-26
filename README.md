@@ -23,6 +23,7 @@
 16. [JPQL QUERIES](#jpql-queries)
 17. [JOINS AND INNER QUERIES](#joins-and-inner-queries)
 18. [CRITERIA QUERY](#criteria-query)
+19. [ENTITY GRAPHS](#entity-graphs)
 
 # HIBERNATE AND JPA
 
@@ -308,12 +309,12 @@ This is my full Hibernate journey documentation
 > eg: A ecommerce should where a user can use multiple filters or any kind of search logics
 >
 >**NOTE** : criteria query only works for selecting(fetching) from the context
-> 
-> From the entity manager, you create a criteria builder `em.getCriteriaBuilder()` 
+>
+> From the entity manager, you create a criteria builder `em.getCriteriaBuilder()`
 > which allow us to create a criteria query
-> 
+>
 > Then the builder allow you to create a criteria query
-> 
+>
 > ```CriteriaBuilder builder = em.getCriteriaBuilder();
 >            CriteriaQuery<Comment> cq = builder.createQuery(Comment.class);
 >
@@ -321,3 +322,20 @@ This is my full Hibernate journey documentation
 >
 >            cq.select(commentRoot); //SELECT c FROM Comment c
 >            TypedQuery<Comment> query = em.createQuery(cq);```
+>
+
+## ENTITY GRAPHS
+
+> For all collections in JPA are lazily loaded and that most at times create an N+1 query
+> and Entity graphs is for solving such problems.
+> For example you have Author which have Book and those books are in BookShops
+> Author -> Book -> BookShop. Entity Graphs create a graph between the relationships
+> The Node of the graph are the Entities and the edges are the relationship between them
+>
+> Entity Graph help customize the fetching of the entity throughout the graph.
+> eg: you can load the Author together with the Book or the Author together with the BookShop
+>
+> It is a programmatic way to specify where you need to load some collections eagerly.
+> So instead of performing multiple select queries to the database, it rather run one select query
+> So Entity Graph is basically to control Lazy or Eagerly loading of collections.
+

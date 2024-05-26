@@ -6,10 +6,7 @@ import com.clement.entity.inheritance.Electronic;
 import com.clement.entity.oneToMany.Comment;
 import com.clement.entity.oneToMany.Post;
 import com.clement.persistance.CustomPersistenceUnitInfo;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Query;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
@@ -106,21 +103,31 @@ public class HibernateApp {
 //            q.getResultList().forEach(o -> System.out.println(o[0] + " " + o[1]));
 
             //criteria query
-            CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<Object[]> cq = builder.createQuery(Object[].class);
-
-            Root<Comment> commentRoot = cq.from(Comment.class);
+//            CriteriaBuilder builder = em.getCriteriaBuilder();
+//            CriteriaQuery<Object[]> cq = builder.createQuery(Object[].class);
+//
+//            Root<Comment> commentRoot = cq.from(Comment.class);
 
 //            cq.select(commentRoot); //SELECT c FROM Comment c
 //            cq.select(commentRoot.get("contents")); // SELECT c.content FROM Comment c
-            cq.multiselect(commentRoot.get("contents"), commentRoot.get("id"))
-                    .orderBy(builder.asc(commentRoot.get("id")));
+//            cq.multiselect(commentRoot.get("contents"), commentRoot.get("id"))
+//                    .orderBy(builder.asc(commentRoot.get("id")));
 
 //            TypedQuery<Comment> query = em.createQuery(cq);
+//
+//            TypedQuery<Object[]> query = em.createQuery(cq);
+//
+//            query.getResultList().forEach(o -> System.out.println(o[0] + " " + o[1]));
+//
+            // Entity Graph
+            EntityGraph<?> graph = em.createEntityGraph(Comment.class);
+            graph.addAttributeNode("post"); //Node with which Comment have a relationship
 
-            TypedQuery<Object[]> query = em.createQuery(cq);
+            // you can use subGraph to also go down the graph
 
-            query.getResultList().forEach(o -> System.out.println(o[0] + " " + o[1]));
+            em.createQuery("SELECT a FROM Comment a", Comment.class)
+                    .setHint("jakarta.persistence.loadgraph", graph)
+                    .getResultList().forEach(a -> System.out.println(a.getPost()));
 
 
             em.getTransaction().commit();
