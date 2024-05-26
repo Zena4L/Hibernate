@@ -10,6 +10,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 
 import java.util.HashMap;
@@ -91,16 +94,34 @@ public class HibernateApp {
 //            String query = "SELECT p FROM Product p WHERE p.name = 'Beer'";
 //            String query = "SELECT p FROM Product p WHERE p.name =:name";
 
-            String query = "SELECT p,c FROM Post p INNER JOIN p.comments c";
+//            String query = "SELECT p,c FROM Post p INNER JOIN p.comments c";
 
 //           Query q = em.createQuery("SELECT p FROM Product p");
 
 //
-            TypedQuery<Object[]> q = em.createQuery(query, Object[].class);
+//            TypedQuery<Object[]> q = em.createQuery(query, Object[].class);
 
 //            q.setParameter("name", "Beer");
 
-            q.getResultList().forEach(o -> System.out.println(o[0] + " " + o[1]));
+//            q.getResultList().forEach(o -> System.out.println(o[0] + " " + o[1]));
+
+            //criteria query
+            CriteriaBuilder builder = em.getCriteriaBuilder();
+            CriteriaQuery<Object[]> cq = builder.createQuery(Object[].class);
+
+            Root<Comment> commentRoot = cq.from(Comment.class);
+
+//            cq.select(commentRoot); //SELECT c FROM Comment c
+//            cq.select(commentRoot.get("contents")); // SELECT c.content FROM Comment c
+            cq.multiselect(commentRoot.get("contents"), commentRoot.get("id"))
+                    .orderBy(builder.asc(commentRoot.get("id")));
+
+//            TypedQuery<Comment> query = em.createQuery(cq);
+
+            TypedQuery<Object[]> query = em.createQuery(cq);
+
+            query.getResultList().forEach(o -> System.out.println(o[0] + " " + o[1]));
+
 
             em.getTransaction().commit();
         }

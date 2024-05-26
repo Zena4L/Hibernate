@@ -22,6 +22,7 @@
 15. [ENTITY INHERITANCE](#entity-inheritance)
 16. [JPQL QUERIES](#jpql-queries)
 17. [JOINS AND INNER QUERIES](#joins-and-inner-queries)
+18. [CRITERIA QUERY](#criteria-query)
 
 # HIBERNATE AND JPA
 
@@ -299,3 +300,24 @@ This is my full Hibernate journey documentation
 >
 > A joined query returns an `Object[]`
 > **NOTE** : when doing joins, look out for N+1 queries
+
+## CRITERIA QUERY
+
+> The use case of this query is the fact that you don't know in advance what you want ti query for
+> eg: The logic of the query depends on some parameters.
+> eg: A ecommerce should where a user can use multiple filters or any kind of search logics
+>
+>**NOTE** : criteria query only works for selecting(fetching) from the context
+> 
+> From the entity manager, you create a criteria builder `em.getCriteriaBuilder()` 
+> which allow us to create a criteria query
+> 
+> Then the builder allow you to create a criteria query
+> 
+> ```CriteriaBuilder builder = em.getCriteriaBuilder();
+>            CriteriaQuery<Comment> cq = builder.createQuery(Comment.class);
+>
+>            Root<Comment> commentRoot = cq.from(Comment.class);
+>
+>            cq.select(commentRoot); //SELECT c FROM Comment c
+>            TypedQuery<Comment> query = em.createQuery(cq);```
